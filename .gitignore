@@ -1,0 +1,4 @@
+.dccache
+credentials.json
+*-output.json
+.DS_Store
