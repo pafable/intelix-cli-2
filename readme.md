@@ -21,7 +21,7 @@ make build
 
 Windows
 ```
-go build .\src\intelix.go
+go build -o intelix.exe .\pkg\filecheck.go .\pkg\main.go .\pkg\oauth.go
 ```
 
 ## Commands
