@@ -24,7 +24,7 @@ const (
 	oAuthUri = "https://api.labs.sophos.com/oauth2/token"
 )
 
-func getOauthToken(u string, cID string, cSec string) string {
+func getOauthToken(u string, cID, cSec *string) string {
 	var o OauthResp
 
 	/* Create a new request to pass in header for basic auth */
@@ -36,7 +36,7 @@ func getOauthToken(u string, cID string, cSec string) string {
 	/* Convert client ID and client secret to base64
 	client-id:client-secret */
 
-	b64 := base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", cID, cSec)))
+	b64 := base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", *cID, *cSec)))
 	postReq.Header.Add("Authorization", "Basic "+b64)
 	postReq.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
