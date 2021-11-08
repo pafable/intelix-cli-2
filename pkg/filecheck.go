@@ -25,9 +25,13 @@ type Report struct {
 	Score int `json:"score"`
 }
 
+const (
+	fileAnalysisUri = "https://us.api.labs.sophos.com/analysis/file/"
+)
+
 func fileCheck(sCMD *flag.FlagSet, file *string, token, analysisType string) (status, job_id string) {
 	var r ReportResponse
-	var uri string = "https://us.api.labs.sophos.com/analysis/file/" + analysisType + "/v1"
+	var uri string = fileAnalysisUri + analysisType + "/v1"
 	sCMD.Parse(os.Args[2:])
 
 	if *file == "" {
@@ -89,7 +93,7 @@ func fileCheck(sCMD *flag.FlagSet, file *string, token, analysisType string) (st
 
 func getFileAnalysisReport(id, token, analysisType string) (score int, status string) {
 	var r ReportResponse
-	var uri string = "https://us.api.labs.sophos.com/analysis/file/" + analysisType + "/v1/reports/" + id + "?report_format=json"
+	var uri string = fileAnalysisUri + analysisType + "/v1/reports/" + id + "?report_format=json"
 	req, err := http.NewRequest("GET", uri, nil)
 	req.Header.Add("Authorization", token)
 

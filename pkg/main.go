@@ -11,7 +11,7 @@ import (
 func main() {
 	clientId := os.Getenv("INTELIX_CLIENT_ID")
 	clientSecret := os.Getenv("INTELIX_CLIENT_SECRET")
-	var oauthToken string = getOauthToken(oAuthUri, clientId, clientSecret)
+	var oauthToken string = getOauthToken(oAuthUri, &clientId, &clientSecret)
 	// fmt.Println(oauthToken)
 
 	// Create flag for "static"
